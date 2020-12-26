@@ -1,0 +1,100 @@
+﻿@page
+@model IndexModel
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+@{
+	ViewData["Title"] = "Home page";
+#if ENG
+string[] months = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+string[] days = new string[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+#endif
+#if GER
+	string[] months = new string[] { "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" };
+	string[] days = new string[] { "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So" };
+#endif
+	string[] images = new string[] { "../images/1572752792736_G1G2G0JKQ.2-1.jpg",
+		"https://drscdn.500px.org/photo/149530017/q%3D80_m%3D2000/v2?sig=367fc8037630863a9bb89b5cceeeea8b40d5b05c0ae2252a1bb34bac1e5838bf",
+		"https://drscdn.500px.org/photo/230643993/q%3D80_m%3D1500/v2?sig=4363dc531366600876a32fa8e0d7be9cacd4ccfa582a228ff1a211fc8be79ac9",
+		"https://drscdn.500px.org/photo/177238631/q%3D80_m%3D1500/v2?sig=9f7da716a594138b68f4bd21f8dfe130877cd20fe690a5966994582c6036c323",
+		"https://drscdn.500px.org/photo/303278747/q%3D80_m%3D1500_k%3D1/v2?sig=f1a4bda99ff502cc16f17dee2e72c156c7efc797655ac94338b732afca7b4a12",
+		"https://drscdn.500px.org/photo/1019851595/q%3D80_m%3D1500/v2?sig=c1ee04fcc227998328b822c745b4778fe86bfe9a836a92ae7fb4bdee3990a2a2",
+		"https://drscdn.500px.org/photo/1015859999/q%3D80_m%3D1500_k%3D1/v2?sig=8b9b855c179896dcef8cd2b23c41428af593e26c297d1699b6e5b53a60767f1c",
+		"https://drscdn.500px.org/photo/1013695009/q%3D80_m%3D1500/v2?sig=8b5110a54660ef749b288cf141e2eb6cab71c6cbd4eb3bfa2339e45b2be1bd38",
+		"https://drscdn.500px.org/photo/248916955/q%3D80_m%3D1500_k%3D1/v2?sig=0cb958097906d6ce7a8f203193bc5b15f18e61c610c33bc741cc05c6bfe5c221",
+		"https://drscdn.500px.org/photo/1011610096/q%3D80_m%3D1500/v2?sig=f3500e0ea89db382ef711360202e92233fbd47b5d9ca0b3177a7741b8cf84309",
+		"https://drscdn.500px.org/photo/203577989/q%3D80_m%3D1500/v2?sig=6199a59c0917d4d44e01f0b2a00297342c7398ae2dc66182844c809db0f28682",
+		"https://drscdn.500px.org/photo/1011609846/q%3D80_m%3D1500/v2?sig=585a6a7aae347411847d5ffe7bc3b649b8dfb648eb25f7ab9d38db02a30a9773",
+		"https://drscdn.500px.org/photo/113190929/q%3D80_m%3D1500/v2?sig=f1b4bf7f47db7c156553c2f328b20a6d92140f94f1cf208b6bea9f681919e3de"
+		};
+	string getMonthName(int i) => months[i == 0 ? 11 : (i == 13 ? 0 : (i - 1))];
+	int getMonthGroup(int i) => i switch {
+		int n when n < 2 || n > 11 => 0,
+		_ => i / 3
+	};
+
+}
+<div class="title">
+	<img src="@images[0]" alt="" style="height: 420mm;" />
+	<div>LITTLE<br />QUOKKA'S</div>
+	<div>CALENDAR @(DateTime.Today.Year + 1)</div>
+</div>
+@for (int i = 1; i <= 12; i++)
+{
+	<img src="@images[i]" alt="" />
+	<div class="page">
+		<div class="secondaryDiv">
+			@{await Html.RenderPartialAsync("SecondaryMonth", null, new ViewDataDictionary(ViewData) { { "days", days }, { "monthName", getMonthName(i - 1) }, { "monthGroup", getMonthGroup(i - 1) }, { "Model", Model.monthsArrays[i - 1] } });}
+			@{await Html.RenderPartialAsync("SecondaryMonth", null, new ViewDataDictionary(ViewData) { { "days", days }, { "monthName", getMonthName(i + 1) }, { "monthGroup", getMonthGroup(i + 1) }, { "Model", Model.monthsArrays[i + 1] } });}
+		</div>
+		<div class="primaryDiv">
+			<span style="color:@(getMonthGroup(i) switch {
+							   0 => "dodgerBlue",
+							   1 => "limeGreen",
+							   2 => "gold",
+							   _ => "darkOrange"
+						   })">@getMonthName(i)</span>
+			<table>
+				<thead>
+					<tr>
+						@foreach (string item in days)
+						{
+							<th>@item</th>
+						}
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.monthsArrays[i])
+					{
+						<tr>
+							@for (int j = 0; j < 7; j++)
+							{
+								if (item[j].IsCurrent)
+								{
+									<td>
+										<div>
+											<div>
+												@item[j].Date
+											</div>
+											@foreach (var item1 in item[j].SpecialDays)
+											{
+												<div>
+													<img src="../icons/@(item1.Occasion).svg" alt="" />
+													<span>@item1.Text</span>
+												</div>
+											}
+										</div>
+									</td>
+								}
+								else
+								{
+									<td>
+									</td>
+								}
+							}
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+}

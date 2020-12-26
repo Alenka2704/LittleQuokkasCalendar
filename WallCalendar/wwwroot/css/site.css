@@ -1,0 +1,164 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@media print {
+	body {
+		width: 297mm;
+		height: 420mm;
+	}
+}
+
+img {
+	width: 297mm;
+	height: 220mm;
+}
+
+.title div {
+	position: absolute;
+	font-size: 25mm;
+	line-height: 32mm;
+	font-weight: bold;
+}
+
+.title div:nth-child(2) {
+	top: 10mm;
+	left: 10mm;
+	color: gray;
+}
+
+.title div:nth-child(3) {
+	top: 386mm;
+	left: 48mm;
+	color: wheat;
+}
+
+.page {
+	width: 297mm;
+	height: 200mm;
+	display: flex;
+}
+
+.secondaryDiv {
+	padding-top: 26mm;
+}
+
+	.secondaryDiv span {
+		font-size: 8mm;
+		font-weight: 500;
+		padding-left: 3mm;
+	}
+
+	.secondaryDiv table {
+		margin: 2mm 5mm 16mm 2mm;
+	}
+
+	.secondaryDiv th {
+		color: gray;
+		font-size: 4mm;
+	}
+
+	.secondaryDiv td {
+		font-size: 5mm;
+		color: gray;
+	}
+
+		.secondaryDiv td:nth-child(5) {
+			color: lightskyblue;
+		}
+
+		.secondaryDiv td:nth-child(6), .secondaryDiv td:nth-child(7) {
+			color: lightpink;
+		}
+
+	.secondaryDiv div {
+		width: 1.5mm;
+		height: 1.5mm;
+		display: inline-flex;
+		margin-bottom: 2.3mm;
+		border-radius: 1.5mm;
+		margin-left: -1.1mm;
+	}
+
+td {
+	text-align: right;
+	vertical-align: top;
+	font-family: 'Roboto', sans-serif;
+	transform: scale(.9, 1);
+}
+
+th {
+	text-align: center;
+	font-weight: 500;
+}
+
+.primaryDiv > span {
+	font-size: 20mm;
+	font-weight: 600;
+	text-align: center;
+	margin-left: 55mm;
+}
+
+.primaryDiv table {
+	margin-top: 6mm;
+	border-collapse: separate;
+	border-spacing: 0mm;
+}
+
+	.primaryDiv table span {
+		font-size: 3mm;
+	}
+
+.primaryDiv th {
+	text-align: center;
+	font-size: 7mm;
+}
+
+.primaryDiv td {
+	font-size: 15mm;
+	line-height: 12mm;
+	width: 32mm;
+	height: 24mm;
+}
+
+	.primaryDiv td:not(:last-child) {
+		border-right: 1px solid gray;
+	}
+
+	.primaryDiv td:nth-child(5) {
+		color: cornflowerblue;
+	}
+
+	.primaryDiv td:nth-child(6), .primaryDiv td:nth-child(7) {
+		color: tomato;
+	}
+
+	.primaryDiv td > div {
+		width: inherit;
+		display: inline-flex;
+	}
+
+		.primaryDiv td > div > div:first-child {
+			width: 17mm;
+			margin-left: -3mm;
+		}
+
+		.primaryDiv td > div > div:nth-child(2) {
+			height: fit-content;
+			margin-left: 1mm;
+		}
+
+			.primaryDiv td > div > div:nth-child(2) > span {
+				display: flex;
+				text-align: left;
+				vertical-align: middle;
+				word-break: break-all;
+				line-height: 2.7mm;
+				width: 11mm;
+				padding-left: 1mm;
+			}
+
+.primaryDiv img {
+	width: 6mm;
+	height: 6mm;
+	float: left;
+}

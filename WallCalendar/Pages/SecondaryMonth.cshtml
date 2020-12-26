@@ -1,0 +1,38 @@
+﻿@page
+<span style="color:@((int)ViewBag.monthGroup switch {
+0=> "lightBlue",
+1=>"lightGreen",
+2=>"khaki",
+_=>"lightSalmon" 
+})">@ViewBag.monthName</span>
+<table>
+	<thead>
+		<tr>
+			@foreach (string item in (string[])ViewBag.days)
+			{
+				<th>@item</th>
+			}
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in (List<DayModel[]>)ViewBag.Model)
+		{
+			<tr>
+				@for (int j = 0; j < 7; j++)
+				{
+					if (item[j].IsCurrent)
+					{
+						<td>
+							@item[j].Date
+								<div style="background-color: @(item[j].SpecialDays.Count > 0?"plum":"white")"></div>
+						</td>
+					}
+					else
+					{
+						<td></td>
+					}
+				}
+			</tr>
+		}
+	</tbody>
+</table>
