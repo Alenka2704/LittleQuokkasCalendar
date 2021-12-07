@@ -1,10 +1,10 @@
 ﻿@page
-<span style="color:@((int)ViewBag.monthGroup switch {
-0=> "lightBlue",
-1=>"lightGreen",
-2=>"khaki",
-_=>"lightSalmon" 
-})">@ViewBag.monthName</span>
+<span style="color: @((int)ViewBag.monthGroup switch {
+					   0 => "lightBlue",
+					   1 => "lightGreen",
+					   2 => "khaki",
+					   _ => "lightSalmon"
+				   })">@ViewBag.monthName</span>
 <table>
 	<thead>
 		<tr>
@@ -24,7 +24,7 @@ _=>"lightSalmon"
 					{
 						<td>
 							@item[j].Date
-								<div style="background-color: @(item[j].SpecialDays.Count > 0?"plum":"white")"></div>
+							<div style="background-color: @(item[j].SpecialDays.Count > 0 ? "paleVioletRed" : "white")"></div>
 						</td>
 					}
 					else

@@ -4,39 +4,72 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
 @{
 	ViewData["Title"] = "Home page";
-#if ENG
-string[] months = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-string[] days = new string[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
-#endif
-#if GER
+#if LITTLEQUOKKA || ELTERN || INES || ANDREA
 	string[] months = new string[] { "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" };
 	string[] days = new string[] { "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So" };
 #endif
-	string[] images = new string[] { "../images/1572752792736_G1G2G0JKQ.2-1.jpg",
-		"https://drscdn.500px.org/photo/149530017/q%3D80_m%3D2000/v2?sig=367fc8037630863a9bb89b5cceeeea8b40d5b05c0ae2252a1bb34bac1e5838bf",
-		"https://drscdn.500px.org/photo/230643993/q%3D80_m%3D1500/v2?sig=4363dc531366600876a32fa8e0d7be9cacd4ccfa582a228ff1a211fc8be79ac9",
-		"https://drscdn.500px.org/photo/177238631/q%3D80_m%3D1500/v2?sig=9f7da716a594138b68f4bd21f8dfe130877cd20fe690a5966994582c6036c323",
-		"https://drscdn.500px.org/photo/303278747/q%3D80_m%3D1500_k%3D1/v2?sig=f1a4bda99ff502cc16f17dee2e72c156c7efc797655ac94338b732afca7b4a12",
-		"https://drscdn.500px.org/photo/1019851595/q%3D80_m%3D1500/v2?sig=c1ee04fcc227998328b822c745b4778fe86bfe9a836a92ae7fb4bdee3990a2a2",
-		"https://drscdn.500px.org/photo/1015859999/q%3D80_m%3D1500_k%3D1/v2?sig=8b9b855c179896dcef8cd2b23c41428af593e26c297d1699b6e5b53a60767f1c",
-		"https://drscdn.500px.org/photo/1013695009/q%3D80_m%3D1500/v2?sig=8b5110a54660ef749b288cf141e2eb6cab71c6cbd4eb3bfa2339e45b2be1bd38",
-		"https://drscdn.500px.org/photo/248916955/q%3D80_m%3D1500_k%3D1/v2?sig=0cb958097906d6ce7a8f203193bc5b15f18e61c610c33bc741cc05c6bfe5c221",
-		"https://drscdn.500px.org/photo/1011610096/q%3D80_m%3D1500/v2?sig=f3500e0ea89db382ef711360202e92233fbd47b5d9ca0b3177a7741b8cf84309",
-		"https://drscdn.500px.org/photo/203577989/q%3D80_m%3D1500/v2?sig=6199a59c0917d4d44e01f0b2a00297342c7398ae2dc66182844c809db0f28682",
-		"https://drscdn.500px.org/photo/1011609846/q%3D80_m%3D1500/v2?sig=585a6a7aae347411847d5ffe7bc3b649b8dfb648eb25f7ab9d38db02a30a9773",
-		"https://drscdn.500px.org/photo/113190929/q%3D80_m%3D1500/v2?sig=f1b4bf7f47db7c156553c2f328b20a6d92140f94f1cf208b6bea9f681919e3de"
+#if ANNA || PARENTS
+	string[] months = new string[] { "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень" };
+	string[] days = new string[] { "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд" };
+#endif
+#if VERA
+	string[] months = new string[] { "Eanáir", "Feabhra", "Márta", "Aibreán", "Bealtaine", "Meitheamh", "Iúil", "Lúnasa", "Meán Fómhair", "Deireadh Fomhair", "Samhain", "Nollaig" };
+	string[] days = new string[] { "Lua", "Mái", "Céa", "Déa", "Aoi", "Sat", "Dom" };
+#endif
+#if SVETA
+	string[] months = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+	string[] days = new string[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+#endif
+	string[] images = new string[] { "../images/title.jpeg",//
+		"../images/january.jpeg",
+		"../images/february.jpeg",
+		"https://drscdn.500px.org/photo/213779887/q%3D80_m%3D1500/v2?sig=5a237e4f1778218c706345ab4762dcc4c3f651786f0133373f670ee7e8f04c74",//
+		"../images/april.jpeg",
+		"https://drscdn.500px.org/photo/166602541/q%3D80_m%3D1500/v2?sig=1cfb6eb669e310ddc706776283e46c460c0aeb0ee9be7e64b5a8f7caf5e25a50",//
+		"../images/june.jpeg",
+		"../images/july.jpeg",
+		"../images/august.jpeg",
+		"../images/september.jpeg",
+		"../images/october.jpeg",//
+		"../images/november.jpeg",
+		"https://drscdn.500px.org/photo/151707583/q%3D80_h%3D600/v2?sig=8bdf9dc25c978138f3bb318e772be1a550788f7635a89cc97468907e237fc0c3"//
 		};
 	string getMonthName(int i) => months[i == 0 ? 11 : (i == 13 ? 0 : (i - 1))];
 	int getMonthGroup(int i) => i switch {
 		int n when n < 2 || n > 11 => 0,
 		_ => i / 3
 	};
-
+	string getOwner() =>
+#if LITTLEQUOKKA
+		"Little quokka";
+#endif
+#if ELTERN
+		"Eltern";
+#endif
+#if INES
+		"Ines";
+#endif
+#if ANDREA
+		"Andrea";
+#endif
+#if ANNA
+		"Anna";
+#endif
+#if PARENTS
+		"Parents";
+#endif
+#if SVETA
+		"Sveta";
+#endif
+#if VERA
+		"Vera";
+#endif
 }
 <div class="title">
 	<img src="@images[0]" alt="" style="height: 420mm;" />
 	<div>LITTLE<br />QUOKKA'S</div>
 	<div>CALENDAR @(DateTime.Today.Year + 1)</div>
+	<div>@getOwner()</div>
 </div>
 @for (int i = 1; i <= 12; i++)
 {
@@ -75,13 +108,15 @@ string[] days = new string[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
 											<div>
 												@item[j].Date
 											</div>
-											@foreach (var item1 in item[j].SpecialDays)
-											{
-												<div>
-													<img src="../icons/@(item1.Occasion).svg" alt="" />
-													<span>@item1.Text</span>
-												</div>
-											}
+											<div>
+												@foreach (var item1 in item[j].SpecialDays)
+												{
+													<div>
+														<img src="../icons/@(item1.Occasion).svg" alt="" />
+														<span>@item1.Text</span>
+													</div>
+												}
+											</div>
 										</div>
 									</td>
 								}
